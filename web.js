@@ -6,7 +6,8 @@ app.get('/', function(request, response) {
   var fs = require('fs');
   var buf = new Buffer(256);
   text = fs.readFileSync("index.html");
-  response.send(buf.toString(text));
+  buf.write(text);
+  response.send(buf.toString("utf-8"));
 });
 
 var port = process.env.PORT || 5000;
